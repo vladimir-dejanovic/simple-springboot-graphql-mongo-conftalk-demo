@@ -1,6 +1,7 @@
 type Author {
   id: ID!
   name: String!
+  posts: [Post]
  }
  
 type Post {
@@ -8,12 +9,13 @@ type Post {
   title: String!
   body: String
   createdBy: Author!
+  comments: [Comment]
 }
 
  type Comment {
   id: ID!
-  authorId: String!
-  postId: String!
+  createdBy: Author!
+  belongsTo: Post!
   text: String
  }
 

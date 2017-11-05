@@ -1,7 +1,5 @@
 package xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.resolver.ql;
 
-import java.util.List;
-
 import com.coxautodev.graphql.tools.GraphQLResolver;
 
 import lombok.RequiredArgsConstructor;
@@ -9,19 +7,20 @@ import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.pojo.Author;
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.pojo.Comment;
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.pojo.Post;
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.repository.AuthorRepository;
-import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.repository.CommentRepository;
+import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.repository.PostRepository;
 
 @RequiredArgsConstructor
-public class PostResolver implements GraphQLResolver<Post> {
+public class CommentResolver implements GraphQLResolver<Comment> {
 	
 	private final AuthorRepository authRepository;
-	private final CommentRepository commentRepository;
+	private final PostRepository postRepository;
 	
-	public Author createdBy(Post post) {
-		return authRepository.findOne(post.getAuthorId());
-	}	
+	public Author createdBy(Comment comment) {
+		return authRepository.findOne(comment.getAuthorId());
+	}
 	
-	public List<Comment> comments(Post post) {
-		return commentRepository.findByPostId(post.getId());
-	}	
+	public Post belongsTo(Comment comment) {
+		return postRepository.findOne(comment.getPostId());
+	}
+
 }
