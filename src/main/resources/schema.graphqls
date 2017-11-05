@@ -21,8 +21,15 @@ type Post {
 
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Query {
   allPosts: [Post]
+  allAuthors: [Author]
+}
+
+type Mutation {
+  addAuthor(name: String!) : Author
+  removeAuthour(id: ID!): Author
 }

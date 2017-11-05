@@ -10,6 +10,7 @@ import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.repository.Post
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.resolver.ql.AuthorResolver;
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.resolver.ql.CommentResolver;
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.resolver.ql.PostResolver;
+import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.resolver.root.Mutation;
 import xyz.itshark.restdemo.simplespringgraphqlmongoconftalkdemo.resolver.root.Query;
 
 public class GraphQLEntryPoint extends SimpleGraphQLServlet {
@@ -23,7 +24,8 @@ public class GraphQLEntryPoint extends SimpleGraphQLServlet {
 				.newParser()
 				.file("schema.graphqls")
 				.resolvers(
-						new Query(postRepository),
+						new Query(postRepository,authRepository),
+						new Mutation(authRepository),
 						new PostResolver(authRepository,commentRepository),
 						new AuthorResolver(postRepository),
 						new CommentResolver(authRepository,postRepository))
