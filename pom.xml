@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>xyz.itshark.restdemo</groupId>
-	<artifactId>simple-spring-graphql-mongo-conftalk-demo</artifactId>
+	<artifactId>simple-springboot-graphql-mongo-conftalk-demo</artifactId>
 	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
