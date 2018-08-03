@@ -18,6 +18,7 @@ public class PostResolver implements GraphQLResolver<Post> {
 	private final CommentRepository commentRepository;
 	
 	public Author createdBy(Post post) {
+		System.out.println("post " + post.getTitle() + " authour" + post.getAuthorId());
 		return authRepository.findOne(post.getAuthorId());
 	}	
 	

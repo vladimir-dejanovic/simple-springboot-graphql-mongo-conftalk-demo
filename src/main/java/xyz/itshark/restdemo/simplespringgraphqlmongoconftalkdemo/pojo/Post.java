@@ -24,6 +24,4 @@ public class Post {
 	
 	private final String title;
 	private final String body;
-	
-	private String zika;
 }

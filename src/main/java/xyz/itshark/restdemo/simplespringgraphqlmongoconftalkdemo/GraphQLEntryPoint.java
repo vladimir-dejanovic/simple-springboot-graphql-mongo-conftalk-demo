@@ -25,7 +25,7 @@ public class GraphQLEntryPoint extends SimpleGraphQLServlet {
 				.file("schema.graphqls")
 				.resolvers(
 						new Query(postRepository,authRepository),
-						new Mutation(authRepository),
+						new Mutation(authRepository,postRepository),
 						new PostResolver(authRepository,commentRepository),
 						new AuthorResolver(postRepository),
 						new CommentResolver(authRepository,postRepository))
